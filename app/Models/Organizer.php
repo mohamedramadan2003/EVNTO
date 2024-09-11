@@ -17,4 +17,9 @@ class Organizer extends Model
     {
         return $this->belongsTo(Role::class);
     }
+
+    public function profile()
+    {
+        return $this->hasOne(OrganizerProfile::class);
+    }
 }

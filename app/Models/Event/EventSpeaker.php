@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Event;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class EventLocation extends Model
+class EventSpeaker extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'address', 'latitude', 'longitude', 'event_id',
+        'name', 'image', 'bio', 'event_id',
     ];
 
     public function event()

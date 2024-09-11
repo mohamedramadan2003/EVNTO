@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Event;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class EventSpeaker extends Model
+class EventGoal extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name', 'image', 'bio', 'event_id',
+        'name', 'event_id',
     ];
 
     public function event()

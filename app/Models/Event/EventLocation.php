@@ -1,23 +1,17 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Event;
 
-use App\Models\User\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class EventComment extends Model
+class EventLocation extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'description', 'user_id', 'event_id',
+        'address', 'latitude', 'longitude', 'event_id',
     ];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 
     public function event()
     {

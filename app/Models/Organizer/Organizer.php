@@ -2,7 +2,7 @@
 
 namespace App\Models\Organizer;
 
-use App\Models\Role;
+use App\Models\Role\Role;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('end_date');
             $table->time('time');
             $table->enum('type', ['paid', 'free']);
-            $table->enum('status', ['upcoming', 'past']);
+            $table->enum('status', ['upcoming', 'past'])->default('upcoming');
             $table->string('category');
             $table->integer('rating')->nullable();
             $table->string('booking_link');

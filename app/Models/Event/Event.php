@@ -2,6 +2,7 @@
 
 namespace App\Models\Event;
 
+use App\Models\Sponsor;
 use App\Models\User\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -37,6 +38,11 @@ class Event extends Model
     public function favouriteUsers()
     {
         return $this->belongsToMany(User::class, 'favourite_events');
+    }
+
+    public function sponsors()
+    {
+        return $this->hasMany(Sponsor::class);
     }
 
 

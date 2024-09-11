@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('role_permission', function (Blueprint $table) {
             $table->foreignId('role_id')->constrained()->onDelete('cascade');
             $table->string('permission');
-            $table->enum('type', ['Team', 'Mentor']);
+            $table->enum('type', ['allowed', 'deny']);
         });
     }
 

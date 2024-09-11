@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\User;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Notification extends Model
+class UserInterest extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'status', 'text', 'read_at', 'user_id',
+        'interest', 'user_id',
     ];
 
     public function user()

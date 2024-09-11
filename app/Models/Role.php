@@ -12,4 +12,14 @@ class Role extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function organizers()
+    {
+        return $this->hasMany(Organizer::class);
+    }
+
+    public function permissions()
+    {
+        return $this->hasMany(RolePermission::class);
+    }
 }

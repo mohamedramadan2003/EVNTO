@@ -40,6 +40,16 @@ class Event extends Model
         return $this->belongsToMany(User::class, 'favourite_events');
     }
 
+    public function recommended()
+    {
+        return $this->hasMany(RecommendedEvent::class);
+    }
+
+    public function rating()
+    {
+        return $this->hasOne(RatingEvent::class);
+    }
+
     public function sponsors()
     {
         return $this->hasMany(Sponsor::class);

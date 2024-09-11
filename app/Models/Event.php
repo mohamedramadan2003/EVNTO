@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,6 +13,31 @@ class Event extends Model
     protected $fillable = [
         'name', 'image', 'description', 'start_date', 'end_date', 'time', 'type', 'category', 'booking_link',
     ];
+
+    public function goals()
+    {
+        return $this->hasMany(EventGoal::class);
+    }
+
+    public function location()
+    {
+        return $this->hasOne(EventLocation::class);
+    }
+
+    public function speakers()
+    {
+        return $this->hasMany(EventSpeaker::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(EventComment::class);
+    }
+
+    public function favouriteUsers()
+    {
+        return $this->belongsToMany(User::class, 'favourite_events');
+    }
 
 
 }

@@ -2,7 +2,7 @@
 
 namespace App\Models\Event;
 
-use App\Models\Sponsor;
+use App\Models\Sponsor\Sponsor;
 use App\Models\User\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

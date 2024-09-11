@@ -14,9 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('favourite_events', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('event_id')->constrained()->onDelete('cascade');
-            $table->primary(['user_id', 'event_id']); // Composite primary key
+            $table->unique(['user_id', 'event_id']);
+            $table->timestamps();
         });
     }
 

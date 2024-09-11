@@ -5,13 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Event extends Model
+class EventGoal extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name', 'image', 'description', 'start_date', 'end_date', 'time', 'type', 'category', 'booking_link',
+        'name', 'event_id',
     ];
 
-
+    public function event()
+    {
+        return $this->belongsTo(Event::class);
+    }
 }

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class EventSpeaker extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     protected $fillable = [
         'name', 'image', 'bio', 'event_id',

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class EventLocation extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     protected $fillable = [
         'address', 'latitude', 'longitude', 'event_id',

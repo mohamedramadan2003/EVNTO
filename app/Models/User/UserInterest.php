@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserInterest extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     protected $fillable = [
         'interest', 'user_id',

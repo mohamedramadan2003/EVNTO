@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserProfile extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     protected $fillable = [
         'collage_name', 'image', 'user_id',
     ];

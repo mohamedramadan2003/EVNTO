@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class EventGoal extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     protected $fillable = [
         'name', 'event_id',

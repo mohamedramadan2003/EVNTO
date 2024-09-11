@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class OrganizerProfile extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     protected $fillable = [
         'image', 'facebook_link', 'linkedin_link', 'twitter_link', 'organizer_id',

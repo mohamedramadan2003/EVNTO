@@ -4,9 +4,9 @@ namespace App\Models\Organizer;
 
 use App\Models\Role\Role;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Organizer extends Model
+class Organizer extends Authenticatable
 {
     use HasFactory;
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Organizer\Organizer;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -36,16 +36,16 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::create([
+        $organizer = Organizer::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        event(new Registered($user));
+        event(new Registered($organizer));
 
-        Auth::login($user);
+        Auth::login($organizer);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('dashboard.dashboard');
     }
 }

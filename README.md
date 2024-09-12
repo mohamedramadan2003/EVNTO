@@ -6,11 +6,9 @@
 ### Prerequisites
 Ensure that you have the following installed on your local machine:
 
-- [PHP 8.x](https://www.php.net/downloads.php)
+- [XAMPP](https://www.apachefriends.org/) (which includes PHP, MySQL, and Apache)
 - [Composer](https://getcomposer.org/)
-- [MySQL](https://www.mysql.com/downloads/) or any other database you plan to use
 - [Node.js](https://nodejs.org/) and npm (for frontend assets)
-- A web server like [Apache](https://httpd.apache.org/) or [Nginx](https://www.nginx.com/)
 
 ### Installation Steps
 

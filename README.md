@@ -51,7 +51,18 @@ Ensure that you have the following installed on your local machine:
     ```
 
 
-7. Run the database migrations:
+7. Create a database and configure your `.env` file:
+
+    - Create a new database in your XAMPP (or other MySQL setup).
+    - Open the `.env` file and update the following lines with your database details:
+
+    ```env
+    DB_DATABASE=your_database_name
+    DB_USERNAME=your_database_username
+    DB_PASSWORD=your_database_password
+    ```
+
+    Once the `.env` file is updated with the correct database information, run the database migrations:
 
     ```bash
     php artisan migrate

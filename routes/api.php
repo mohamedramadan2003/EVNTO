@@ -1,5 +1,12 @@
 <?php
 
+use App\Http\Controllers\Api\V1\CalenderController;
+use App\Http\Controllers\Api\V1\CommentController;
+use App\Http\Controllers\Api\V1\EventController;
+use App\Http\Controllers\Api\V1\FilterController;
+use App\Http\Controllers\Api\V1\OrganizerController;
+use App\Http\Controllers\Api\V1\ProfileController;
+use App\Http\Controllers\Api\V1\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +21,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::prefix('v1/')
+    ->middleware('auth:sanctum')
+    ->group(function () {
+
+        Route::get('users',[UserController::class,'index']);
+
+        Route::get('profile', [ProfileController::class, 'show'])->middleware('auth:sanctum');
+        Route::put('profile', [ProfileController::class, 'update'])->middleware('auth:sanctum');
+
+        Route::get('events',[EventController::class,'index']);
+        Route::get('events/{id}',[EventController::class,'show']);
+        Route::post('recommended-events',[EventController::class,'setRecommendedEvents']);
+        Route::get('recommended-events',[EventController::class,'getRecommendedEvents']);
+        Route::post('favorite-events',[EventController::class,'setFavoriteEvents']);
+        Route::get('favorite-events',[EventController::class,'getFavoriteEvents']);
+        Route::delete('favorite-events',[EventController::class,'deleteFavoriteEvents']);
+
+        Route::apiResource('comments',CommentController::class)->except(['show']);
+
+        Route::get('/organizers',[OrganizerController::class,'index']);
+        Route::get('/organizers/{id}',[OrganizerController::class,'show']);
+
+        Route::get('calender',[CalenderController::class,'index']);
+        Route::post('calender',[CalenderController::class,'store']);
+
+        Route::get("search",[FilterController::class,'search']);
+        Route::get("filter",[FilterController::class,'filter']);
+
+
+        require __DIR__.'/api-auth.php';
+    });
+

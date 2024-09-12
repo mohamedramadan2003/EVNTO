@@ -52,17 +52,6 @@ Ensure that you have the following installed on your local machine:
     php artisan breeze:install
     ```
 
-    For Inertia (Vue or React):
-
-    ```bash
-    php artisan breeze:install vue
-    ```
-
-    or
-
-    ```bash
-    php artisan breeze:install react
-    ```
 
 7. Run the database migrations:
 

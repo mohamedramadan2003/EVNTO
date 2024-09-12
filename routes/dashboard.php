@@ -19,9 +19,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware([])
+Route::middleware(['auth'])
     ->prefix('dashboard')
-    ->name('.dashboard')
+    ->name('dashboard.')
     ->group(function () {
 
 

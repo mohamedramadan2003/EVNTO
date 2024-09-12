@@ -6,7 +6,6 @@ use App\Http\Controllers\Dashboard\OrganizerConteoller;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\RoleConteoller;
 use App\Http\Controllers\Dashboard\SponsorController;
-use App\Http\Controllers\Dashboard\UserConteoller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,7 +36,6 @@ Route::middleware([])
         ->name('profile.update');
 
     Route::resources([
-        '/users' => UserConteoller::class,
         '/organizers' => OrganizerConteoller::class,
         '/events' => EventConteoller::class,
         '/sponsors' => SponsorController::class,

@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth'])
+Route::middleware()
     ->prefix('dashboard')
     ->name('dashboard.')
     ->group(function () {

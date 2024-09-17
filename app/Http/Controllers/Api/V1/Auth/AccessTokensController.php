@@ -8,6 +8,7 @@ use App\Http\Requests\api\Auth\RegisterRequest;
 use App\Models\User\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class AccessTokensController extends Controller
 {
@@ -58,7 +59,25 @@ class AccessTokensController extends Controller
     }
     public function logout(Request $request)
     {
+        // Get bearer token from the request
+        $accessToken = $request->bearerToken();
 
+        // Get access token from database
+        $token = PersonalAccessToken::findToken($accessToken);
+        // Revoke token
+        if ($token)
+        {// Revoke token
+            $token->delete();
+            return response([
+                'message' => 'Logout Success',
+                'status' => 'success'
+            ], 200);
+        }
+
+        return response([
+            'message' => 'Token not found',
+            'status' => 'failed'
+        ], 404);
     }
     public function forgotPassword(Request $request)
     {

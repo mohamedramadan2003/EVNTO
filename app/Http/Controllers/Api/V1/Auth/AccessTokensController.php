@@ -3,11 +3,16 @@
 namespace App\Http\Controllers\Api\V1\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\api\Auth\ForgotPasswordRequest;
 use App\Http\Requests\api\Auth\LoginRequest;
 use App\Http\Requests\api\Auth\RegisterRequest;
+use App\Mail\VerificationCodeMail;
+use App\Models\User\PasswordReset;
 use App\Models\User\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Laravel\Sanctum\PersonalAccessToken;
 
 class AccessTokensController extends Controller
@@ -79,10 +84,33 @@ class AccessTokensController extends Controller
             'status' => 'failed'
         ], 404);
     }
-    public function forgotPassword(Request $request)
+    public function forgotPassword(ForgotPasswordRequest $request)
     {
+        set_time_limit(120);
+        $email = $request->validated()['email'];
 
+        $code = rand(10000, 99999);
+        Mail::to($email)->send(new VerificationCodeMail($code));
+
+        PasswordReset::updateOrCreate(
+            ['email' => $email], // This will ensure no duplicates for the same email
+            ['token' => $code, 'created_at' => now()] // Update the code; created_at will be set automatically
+        );
+
+        return response()->json([
+            'code' => $code,
+            'message' => 'Verification code sent to your email.',
+            'status' => 'success'
+        ], 200);
     }
+
+//        PasswordReset::create([
+//            'email'=>$email,
+//            'token'=>$code,
+//            'created_at'=>Carbon::now()
+//        ]);
+
+
 
     public function resetPassword(Request $request)
     {

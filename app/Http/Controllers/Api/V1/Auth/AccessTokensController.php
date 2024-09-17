@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\api\Auth\LoginRequest;
 use App\Http\Requests\api\Auth\RegisterRequest;
 use App\Models\User\User;
 use Illuminate\Http\Request;
@@ -37,8 +38,22 @@ class AccessTokensController extends Controller
         return response($response, 201);
 
     }
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
+        $user = User::where('email', $request->email)->first();
+        if ($user && Hash::check($request->password, $user->password)) {
+            $token = $user->createToken($request->email)->plainTextToken;
+            return response([
+                'token' => $token,
+                'message' => 'Login Success',
+                'status' => 'success'
+            ], 200);
+        }
+
+        return response([
+            'message' => 'The Provided Credentials are incorrect',
+            'status' => 'failed'
+        ], 401);
 
     }
     public function logout(Request $request)

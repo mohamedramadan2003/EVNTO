@@ -50,6 +50,7 @@ Route::prefix('v1/')
         Route::get("filter",[FilterController::class,'filter']);
 
 
-        require __DIR__.'/api-auth.php';
+
     });
 
+require __DIR__.'/api-auth.php';

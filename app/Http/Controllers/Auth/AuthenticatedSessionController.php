@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\Auth;
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\api\Auth\LoginRequest;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,11 +25,11 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate('organizer');
+        $request->authenticate();
 
         $request->session()->regenerate();
 
-        return redirect()->route('dashboard.dashboard');
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**
@@ -36,7 +37,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        Auth::guard('organizer')->logout();
+        Auth::guard('web')->logout();
 
         $request->session()->invalidate();
 

@@ -19,13 +19,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware()
-    ->prefix('dashboard')
+Route::
+    prefix('dashboard')
     ->name('dashboard.')
     ->group(function () {
 
 
-    Route::get('/dashboard', [DashboardController::class, 'index'])
+    Route::get('/', [DashboardController::class, 'index'])
         ->name('dashboard');
 
 

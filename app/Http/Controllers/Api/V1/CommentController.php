@@ -13,6 +13,9 @@ class CommentController extends Controller
 {
     public function index()
     {
+        $comments = EventComment::with('user')->get();
+
+        return response()->json($comments);
 
     }
 

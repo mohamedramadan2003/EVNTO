@@ -25,7 +25,6 @@ Route::get('/comments', [CommentController::class, 'index']);
 Route::middleware('auth:sanctum')
     ->group(function () {
 
-        Route::get('users',[UserController::class,'index']);
 
         Route::get('profile', [ProfileController::class, 'show'])->middleware('auth:sanctum');
         Route::put('profile', [ProfileController::class, 'update'])->middleware('auth:sanctum');
@@ -52,5 +51,5 @@ Route::middleware('auth:sanctum')
 
 
     });
-
+Route::get('users',[UserController::class,'index']);
 require __DIR__.'/api-auth.php';

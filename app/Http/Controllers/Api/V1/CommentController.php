@@ -45,6 +45,18 @@ class CommentController extends Controller
 
     }
 
+    public function show($eventId)
+    {
+        $comments = EventComment::where('event_id', $eventId)
+            ->select('description', 'user_id')
+            ->get();
+        if ($comments->isEmpty()) {
+            return response()->json(['message' => 'No comments found for this event.'], 404);
+        }
+
+        return response()->json($comments);
+    }
+
     public function destroy($id)
     {
         $comment = EventComment::findOrFail($id);

@@ -41,8 +41,19 @@ class CommentController extends Controller
         return response()->json($comment);
 
     }
-    public function delete(Request $request , string $id)
-    {
 
+    public function destroy($id)
+    {
+        $comment = EventComment::findOrFail($id);
+
+        // Check if the authenticated user is the owner of the comment
+        if ($comment->user_id !== Auth::id()) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
+        $comment->delete();
+
+        return response()->json(['message' => 'Comment deleted successfully']);
     }
+
 }

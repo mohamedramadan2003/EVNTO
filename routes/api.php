@@ -22,8 +22,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/comments', [CommentController::class, 'index']);
-Route::prefix('v1/')
-    ->middleware('auth:sanctum')
+Route::middleware('auth:sanctum')
     ->group(function () {
 
         Route::get('users',[UserController::class,'index']);

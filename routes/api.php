@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('/comments', [CommentController::class, 'index']);
 
+Route::get('/comments', [CommentController::class, 'index']);
 Route::prefix('v1/')
     ->middleware('auth:sanctum')
     ->group(function () {
@@ -39,7 +39,7 @@ Route::prefix('v1/')
         Route::get('favorite-events',[EventController::class,'getFavoriteEvents']);
         Route::delete('favorite-events',[EventController::class,'deleteFavoriteEvents']);
 
-        Route::apiResource('comments',CommentController::class)->except(['show']);
+        Route::apiResource('comments',CommentController::class)->except(['index']);
 
         Route::get('/organizers',[OrganizerController::class,'index']);
         Route::get('/organizers/{id}',[OrganizerController::class,'show']);

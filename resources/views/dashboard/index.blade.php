@@ -10,7 +10,9 @@
 
         <!-- Main content -->
         <section class="content">
+
            <x-dashboard.card />
+
         </section>
     <!-- /.content- -->
 

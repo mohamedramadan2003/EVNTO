@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class EventConteoller extends Controller
+class EventController extends Controller
 {
     /**
      * Display a listing of the resource.

@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\Dashboard\DashboardController;
-use App\Http\Controllers\Dashboard\EventConteoller;
-use App\Http\Controllers\Dashboard\OrganizerConteoller;
+use App\Http\Controllers\Dashboard\EventController;
+use App\Http\Controllers\Dashboard\OrganizerController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\RoleConteoller;
 use App\Http\Controllers\Dashboard\SponsorController;
@@ -36,8 +36,8 @@ Route::
         ->name('profile.update');
 
     Route::resources([
-        '/organizers' => OrganizerConteoller::class,
-        '/events' => EventConteoller::class,
+        '/organizers' => OrganizerController::class,
+        '/events' => EventController::class,
         '/sponsors' => SponsorController::class,
         '/roles' => RoleConteoller::class,
     ]);

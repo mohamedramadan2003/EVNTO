@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Organizer\Organizer;
 use Illuminate\Http\Request;
 
-class OrganizerConteoller extends Controller
+class OrganizerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,9 @@ class OrganizerConteoller extends Controller
      */
     public function index()
     {
-        //
+        $organizers = Organizer::latest()->paginate();
+
+        return view('dashboard.organizer.index', compact('organizers'));
     }
 
     /**

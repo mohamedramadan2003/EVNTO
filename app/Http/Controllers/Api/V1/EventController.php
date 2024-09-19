@@ -25,7 +25,13 @@ class EventController extends Controller
     }
     public function show(string $id)
     {
+        $event = Event::with(['speakers', 'goals', 'location'])->find($id);
 
+        if (!$event) {
+            return response()->json(['message' => 'Event not found'], 404);
+        }
+
+        return new EventResource($event);
     }
     public function setRecommendedEvents(Request $request , string $id)
     {

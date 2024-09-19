@@ -12,7 +12,12 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::with(['skills:skill','interests:interest'])->get();
+        $users = User::with(
+            [
+                'skills:skill,user_id',
+                'interests:interest,user_id',
+                'profile:user_id,collage_name'
+            ])->get();
 
         return UserResource::collection($users);
     }

@@ -16,17 +16,11 @@ class UserResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'user_college' => $this->profile->college_name,
+            'college_name' => $this->profile->collage_name ?? 'null',
             'relations' => [
-                'skills' => [
-                    'user_skills' => $this->skills->skill
-                ],
-                'interests' =>
-                [
-                    'user_interests' => $this->interests->interest
-                ]
+                'user_skills' => $this->skills->pluck('skill')->toArray(),
+                'user_interests' => $this->interests->pluck('interest')->toArray()
             ],
-
         ];
     }
 }

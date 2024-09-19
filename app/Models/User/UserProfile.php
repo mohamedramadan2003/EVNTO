@@ -9,9 +9,13 @@ class UserProfile extends Model
 {
     use HasFactory;
     public $timestamps = false;
+
+    protected $table = 'user_profile';
+
     protected $fillable = [
         'collage_name', 'image', 'user_id',
     ];
+
 
     public function user()
     {

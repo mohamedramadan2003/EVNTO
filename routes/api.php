@@ -33,7 +33,7 @@ Route::middleware('auth:sanctum')
         Route::get('events/{id}',[EventController::class,'show']);
         Route::post('recommended-events',[EventController::class,'setRecommendedEvents']);
         Route::get('recommended-events',[EventController::class,'getRecommendedEvents']);
-        Route::post('favorite-events',[EventController::class,'setFavoriteEvents']);
+        Route::post('favorite-events/{id}',[EventController::class,'setFavoriteEvents']);
         Route::get('favorite-events',[EventController::class,'getFavoriteEvents']);
         Route::delete('favorite-events',[EventController::class,'deleteFavoriteEvents']);
 

@@ -37,7 +37,7 @@ class Event extends Model
 
     public function favouriteUsers()
     {
-        return $this->belongsToMany(User::class, 'favourite_events');
+        return $this->belongsToMany(User::class, 'favourite_events')->withTimestamps();
     }
 
     public function recommended()

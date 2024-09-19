@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(OrganizerSeeder::class);
         $this->call(EventSeeder::class);
         $this->call(EventGoalSeeder::class);
+        $this->call(EventSpeakerSeeder::class);
 
         // \App\Models\User::factory(10)->create();
 

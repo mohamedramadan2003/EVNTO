@@ -54,8 +54,25 @@ class EventController extends Controller
 
         return response()->json(['message' => 'Event added to favorites'], 201);
     }
-    public function getFavoriteEvents()
+    public function getFavoriteEvents(Request $request)
     {
+        $user = auth()->user();
+        $status = $request->input('status');
+
+        $query = $user->favouriteEvents()->with(['speakers', 'goals', 'location']);
+        if ($status) {
+            $query->where('status', $status);
+        }
+        $favoriteEvents = $query->get();
+
+        if ($favoriteEvents->isEmpty())
+        {
+            return response()->json([
+                'message' => 'No liked events yet'
+            ], 200);
+        }
+
+        return EventResource::collection($favoriteEvents);
 
     }
 

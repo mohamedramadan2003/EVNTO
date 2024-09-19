@@ -29,7 +29,6 @@ Route::middleware('auth:sanctum')
         Route::get('profile', [ProfileController::class, 'show'])->middleware('auth:sanctum');
         Route::put('profile', [ProfileController::class, 'update'])->middleware('auth:sanctum');
 
-        Route::get('events',[EventController::class,'index']);
         Route::get('events/{id}',[EventController::class,'show']);
         Route::post('recommended-events',[EventController::class,'setRecommendedEvents']);
         Route::get('recommended-events',[EventController::class,'getRecommendedEvents']);
@@ -52,4 +51,5 @@ Route::middleware('auth:sanctum')
 
     });
 Route::get('users',[UserController::class,'index']);
+Route::get('events',[EventController::class,'index']);
 require __DIR__.'/api-auth.php';

@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\EventResource;
+use App\Models\Event\Event;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
     public function index()
     {
+        $events = Event::with(['speakers', 'goals', 'location'])->get();
+        return EventResource::collection($events);
 
     }
     public function show(string $id)

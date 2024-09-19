@@ -35,6 +35,10 @@ class SearchEventRequest extends FormRequest
             'query.string' => 'The search query must be a string.',
             'organizer_name.string' => 'The organizer name must be a string.',
             'address.string' => 'The address must be a string.',
+            'category' => 'nullable|string|max:255',
+            'event_type' => 'nullable|in:paid,free',
+            'event_date' => 'nullable|in:today,tomorrow,this_week,set_date',
+            'set_date' => 'nullable|date', // Only required if event_date is set_date
         ];
     }
 }

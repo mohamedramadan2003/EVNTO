@@ -43,7 +43,16 @@ class EventController extends Controller
     }
     public function setFavoriteEvents(Request $request , string $id)
     {
+        $user = auth()->user();
+        // Check if the event is already in the user's favorites
+        $exists = $user->favouriteEvents()->where('event_id', $id)->exists();
 
+        if ($exists) {
+            return response()->json(['message' => 'Event is already in your favorites'], 400);
+        }
+        $user->favouriteEvents()->attach($id);
+
+        return response()->json(['message' => 'Event added to favorites'], 201);
     }
     public function getFavoriteEvents()
     {

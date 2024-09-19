@@ -29,6 +29,7 @@ Route::middleware('auth:sanctum')
         Route::get('profile', [ProfileController::class, 'show'])->middleware('auth:sanctum');
         Route::put('profile', [ProfileController::class, 'update'])->middleware('auth:sanctum');
 
+        Route::get('events/upcoming', [EventController::class, 'getUpcomingEvents']);
         Route::get('events/{id}',[EventController::class,'show']);
         Route::post('recommended-events',[EventController::class,'setRecommendedEvents']);
         Route::get('recommended-events',[EventController::class,'getRecommendedEvents']);

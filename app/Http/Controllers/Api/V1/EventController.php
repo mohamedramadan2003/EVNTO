@@ -15,6 +15,14 @@ class EventController extends Controller
         return EventResource::collection($events);
 
     }
+
+    public function getUpcomingEvents()
+    {
+        $events = Event::with(['speakers', 'goals', 'location'])
+            ->where('status', 'upcoming') // Filter by 'upcoming' status
+            ->get();
+        return EventResource::collection($events);
+    }
     public function show(string $id)
     {
 

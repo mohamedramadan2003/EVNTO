@@ -2,6 +2,7 @@
 
 namespace App\Models\Organizer;
 
+use App\Models\Event\Event;
 use App\Models\Role\Role;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -22,5 +23,10 @@ class Organizer extends Authenticatable
     public function profile()
     {
         return $this->hasOne(OrganizerProfile::class);
+    }
+
+    public function events()
+    {
+        return $this->hasMany(Event::class);
     }
 }

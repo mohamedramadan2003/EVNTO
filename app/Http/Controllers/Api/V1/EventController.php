@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\EventResource;
 use App\Models\Event\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -54,7 +55,7 @@ class EventController extends Controller
 
         return response()->json(['message' => 'Event added to favorites'], 201);
     }
-    public function getFavoriteEvents(Request $request)
+    public function getUserFavoriteEvents(Request $request)
     {
         $user = auth()->user();
         $status = $request->input('status');
@@ -88,6 +89,22 @@ class EventController extends Controller
         $user->favouriteEvents()->detach($id);
 
         return response()->json(['message' => 'Event removed from your favorites'], 200);
+    }
+
+    public function getFavoriteEvents()
+    {
+        $favouriteEvents = DB::table('favourite_events')
+            ->select('user_id', 'event_id', 'created_at', 'updated_at')
+            ->get();
+
+        // Check if there are no favorite events
+        if ($favouriteEvents->isEmpty()) {
+            return response()->json([
+                'message' => 'There are no favorite events'
+            ], 200);
+        }
+
+        return response()->json($favouriteEvents);
     }
 
 

@@ -35,7 +35,7 @@ Route::middleware('auth:sanctum')
         Route::get('recommended-events',[EventController::class,'getRecommendedEvents']);
         Route::post('favorite-events/{id}',[EventController::class,'setFavoriteEvents']);
         Route::get('favorite-events',[EventController::class,'getFavoriteEvents']);
-        Route::delete('favorite-events',[EventController::class,'deleteFavoriteEvents']);
+        Route::delete('favorite-events/{id}',[EventController::class,'deleteFavoriteEvents']);
 
         Route::apiResource('comments',CommentController::class)->except(['index']);
 

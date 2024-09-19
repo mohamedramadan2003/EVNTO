@@ -61,7 +61,16 @@ class EventController extends Controller
 
     public function deleteFavoriteEvents(Request $request, string $id)
     {
+        $user = auth()->user();
+        $exists = $user->favouriteEvents()->where('event_id', $id)->exists();
 
+        if (!$exists) {
+            return response()->json(['message' => 'Event not found in your favorites'], 404);
+        }
+
+        $user->favouriteEvents()->detach($id);
+
+        return response()->json(['message' => 'Event removed from your favorites'], 200);
     }
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\api\SearchEvent\SearchEventRequest;
 use App\Http\Resources\EventResource;
 use App\Models\Event\Event;
 use Illuminate\Http\Request;
@@ -10,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class FilterController extends Controller
 {
-    public function search(Request $request)
+    public function search(SearchEventRequest $request)
     {
         $query = $request->input('query');
         $organizerName = $request->input('organizer_name');

@@ -12,8 +12,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::with(
-            [
+        $users = User::with([
                 'skills:skill,user_id',
                 'interests:interest,user_id',
                 'profile:user_id,collage_name'

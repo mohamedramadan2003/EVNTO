@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('event_location', function (Blueprint $table) {
+        Schema::create('event_locations', function (Blueprint $table) {
             $table->id();
             $table->string('address');
             $table->decimal('latitude', 10, 8)->nullable();
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('event_location');
+        Schema::dropIfExists('event_locations');
     }
 };

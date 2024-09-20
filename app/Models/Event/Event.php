@@ -2,6 +2,7 @@
 
 namespace App\Models\Event;
 
+use App\Models\Organizer\Organizer;
 use App\Models\Sponsor\Sponsor;
 use App\Models\User\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -37,7 +38,7 @@ class Event extends Model
 
     public function favouriteUsers()
     {
-        return $this->belongsToMany(User::class, 'favourite_events');
+        return $this->belongsToMany(User::class, 'favourite_events')->withTimestamps();
     }
 
     public function recommended()
@@ -53,6 +54,11 @@ class Event extends Model
     public function sponsors()
     {
         return $this->hasMany(Sponsor::class);
+    }
+
+    public function organizer()
+    {
+        return $this->belongsTo(Organizer::class);
     }
 
 

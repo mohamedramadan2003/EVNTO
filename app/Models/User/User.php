@@ -45,7 +45,7 @@ class User extends Authenticatable
 
     public function favouriteEvents()
     {
-        return $this->belongsToMany(Event::class, 'favourite_events');
+        return $this->belongsToMany(Event::class, 'favourite_events')->withTimestamps();
     }
 
     public function comments()

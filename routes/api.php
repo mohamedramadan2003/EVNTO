@@ -29,13 +29,13 @@ Route::middleware('auth:sanctum')
         Route::get('profile', [ProfileController::class, 'show'])->middleware('auth:sanctum');
         Route::put('profile', [ProfileController::class, 'update'])->middleware('auth:sanctum');
 
-        Route::get('events',[EventController::class,'index']);
+        Route::get('events/upcoming', [EventController::class, 'getUpcomingEvents']);
         Route::get('events/{id}',[EventController::class,'show']);
         Route::post('recommended-events',[EventController::class,'setRecommendedEvents']);
         Route::get('recommended-events',[EventController::class,'getRecommendedEvents']);
-        Route::post('favorite-events',[EventController::class,'setFavoriteEvents']);
-        Route::get('favorite-events',[EventController::class,'getFavoriteEvents']);
-        Route::delete('favorite-events',[EventController::class,'deleteFavoriteEvents']);
+        Route::post('favorite-events/{id}',[EventController::class,'setFavoriteEvents']);
+        Route::get('users/favorite-events',[EventController::class,'getUserFavoriteEvents']);
+        Route::delete('favorite-events/{id}',[EventController::class,'deleteFavoriteEvents']);
 
         Route::apiResource('comments',CommentController::class)->except(['index']);
 
@@ -52,4 +52,6 @@ Route::middleware('auth:sanctum')
 
     });
 Route::get('users',[UserController::class,'index']);
+Route::get('events',[EventController::class,'index']);
+Route::get('favorite-events',[EventController::class,'getFavoriteEvents']);
 require __DIR__.'/api-auth.php';

@@ -14,6 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(OrganizerSeeder::class);
+        $this->call(EventSeeder::class);
+        $this->call(EventGoalSeeder::class);
+        $this->call(EventSpeakerSeeder::class);
+        $this->call(EventLocationSeeder::class);
 
         // \App\Models\User::factory(10)->create();
 

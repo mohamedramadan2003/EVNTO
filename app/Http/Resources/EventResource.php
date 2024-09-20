@@ -29,9 +29,13 @@ class EventResource extends JsonResource
             'rating' => $this->rating,
             'booking_link' => $this->booking_link,
             'organizer_id' => $this->organizer_id,
-            'speakers' => $this->speakers,
-            'goals' => $this->goals,
-            'location' => $this->location,
+            'speakers_name' => $this->speakers->pluck('name')->toArray(),
+            'speakers_image' => $this->speakers->pluck('image')->toArray(),
+            'goals' => $this->goals->pluck('name')->toArray(),
+            'location_address' => $this->location->address,
+            'location_latitude' => $this->location->latitude,
+            'location_longitude' => $this->location->longitude,
+            'created_at' => $this->created_at->diffForHumans(),
         ];
     }
 }

@@ -10,19 +10,15 @@ use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
-    public function index()
-    {
-        $events = Event::with(['speakers', 'goals', 'location'])->get();
-        return EventResource::collection($events);
-
-    }
-
-    public function getUpcomingEvents()
+    public function index(Request $request)
     {
         $events = Event::with(['speakers', 'goals', 'location'])
-            ->where('status', 'upcoming') // Filter by 'upcoming' status
+            ->filter($request->query())
             ->get();
+
+
         return EventResource::collection($events);
+
     }
     public function show(string $id)
     {
@@ -34,6 +30,15 @@ class EventController extends Controller
 
         return new EventResource($event);
     }
+
+    public function getUpcomingEvents()
+    {
+        $events = Event::with(['speakers', 'goals', 'location'])
+            ->where('status', 'upcoming') // Filter by 'upcoming' status
+            ->get();
+        return EventResource::collection($events);
+    }
+
     public function setRecommendedEvents(Request $request , string $id)
     {
 

@@ -9,6 +9,7 @@ class EventLocation extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $table = 'event_location';
 
     protected $fillable = [
         'address', 'latitude', 'longitude', 'event_id',

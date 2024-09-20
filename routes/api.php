@@ -32,7 +32,6 @@ Route::middleware('auth:sanctum')
     });
 Route::get('/comments', [CommentController::class, 'index']);
 Route::get('/organizers',[OrganizerController::class,'index']);
-Route::get('profile', [ProfileController::class, 'show'])->middleware('auth:sanctum');
 Route::put('profile', [ProfileController::class, 'update'])->middleware('auth:sanctum');
 
 Route::get('events/upcoming', [EventController::class, 'getUpcomingEvents']);

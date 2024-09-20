@@ -18,59 +18,59 @@ class EventGoalSeeder extends Seeder
         DB::table('event_goals')->insert([
             [
                 'name' => 'Network with Industry Leaders',
-                'event_id' => 1,
+                'event_id' => 13,
             ],
             [
                 'name' => 'Learn New Skills',
-                'event_id' => 1,
+                'event_id' => 13,
             ],
             [
                 'name' => 'Network with Industry Leaders',
-                'event_id' => 2,
+                'event_id' => 13,
             ],
             [
                 'name' => 'Gain Insights on Market Trends',
-                'event_id' => 2,
+                'event_id' => 14,
             ],
             [
                 'name' => 'Learn New Skills',
-                'event_id' => 3,
+                'event_id' => 15,
             ],
             [
                 'name' => 'Share Best Practices',
-                'event_id' => 3,
+                'event_id' => 13,
             ],
             [
                 'name' => 'Learn New Skills',
-                'event_id' => 4,
+                'event_id' => 14,
             ],
             [
                 'name' => 'Gain Insights on Market Trends',
-                'event_id' => 4,
+                'event_id' => 15,
             ],
             [
                 'name' => 'Learn New Skills',
-                'event_id' => 5,
+                'event_id' => 16,
             ],
             [
                 'name' => 'Gain Insights on Market Trends',
-                'event_id' => 5,
+                'event_id' => 17,
             ],
             [
                 'name' => 'Learn New Skills',
-                'event_id' => 6,
+                'event_id' => 14,
             ],
             [
                 'name' => 'Gain Insights on Market Trends',
-                'event_id' => 6,
+                'event_id' => 15,
             ],
             [
                 'name' => 'Learn New Skills',
-                'event_id' => 7,
+                'event_id' => 18,
             ],
             [
                 'name' => 'Gain Insights on Market Trends',
-                'event_id' => 7,
+                'event_id' => 17,
             ],
         ]);
     }

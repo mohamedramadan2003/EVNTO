@@ -15,49 +15,44 @@ class EventLocationSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('event_locations')->insert([
+        DB::table('event_location')->insert([
             [
                 'address' => 'ITI Mansoura University',
                 'latitude' => 34.052235,
                 'longitude' => -118.243683,
-                'event_id' => 1,
+                'event_id' => 13,
             ],
             [
                 'address' => 'ITI Mansoura University',
                 'latitude' => 34.052235,
                 'longitude' => -118.243683,
-                'event_id' => 2,
+                'event_id' => 14,
             ],
             [
                 'address' => 'ITI Mansoura University',
                 'latitude' => 34.052235,
                 'longitude' => -118.243683,
-                'event_id' => 3,
+                'event_id' => 15,
             ],
             [
                 'address' => 'ITI Mansoura University',
                 'latitude' => 34.052235,
                 'longitude' => -118.243683,
-                'event_id' => 4,
+                'event_id' => 16,
             ],
             [
                 'address' => 'ITI Mansoura University',
                 'latitude' => 34.052235,
                 'longitude' => -118.243683,
-                'event_id' => 5,
+                'event_id' => 17,
             ],
             [
                 'address' => 'ITI Mansoura University',
                 'latitude' => 34.052235,
                 'longitude' => -118.243683,
-                'event_id' => 6,
+                'event_id' => 18,
             ],
-            [
-                'address' => 'ITI Mansoura University',
-                'latitude' => 34.052235,
-                'longitude' => -118.243683,
-                'event_id' => 7,
-            ],
+
             ]);
     }
 }

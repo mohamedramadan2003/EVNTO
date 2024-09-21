@@ -24,30 +24,33 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')
     ->group(function () {
 
+        Route::post('/user-info',[UserController::class,'storeUserInfo']);
+
+        Route::put('profile', [ProfileController::class, 'update'])
+            ->middleware('auth:sanctum');
+
+        Route::get('events',[EventController::class,'index']);
+        Route::get('events/{id}',[EventController::class,'show']);
+        Route::get('events/upcoming', [EventController::class, 'getUpcomingEvents']);
+        Route::post('recommended-events',[EventController::class,'setRecommendedEvents']);
+        Route::get('recommended-events',[EventController::class,'getRecommendedEvents']);
+        Route::post('favorite-events/{id}',[EventController::class,'setFavoriteEvents']);
+        Route::get('favorite-events',[EventController::class,'getFavoriteEvents']);
+        Route::get('users/favorite-events',[EventController::class,'getUserFavoriteEvents']);
+        Route::delete('favorite-events/{id}',[EventController::class,'deleteFavoriteEvents']);
+
+        Route::get('organizers',[OrganizerController::class,'index']);
+
+        Route::apiResource('comments',CommentController::class)
+            ->except(['index']);
 
 
-
+        Route::get("search",[FilterController::class,'search']);
+        Route::get("filter",[FilterController::class,'filter']);
 
 
     });
-Route::get('comments', [CommentController::class, 'index']);
-Route::get('organizers',[OrganizerController::class,'index']);
-Route::put('profile', [ProfileController::class, 'update'])->middleware('auth:sanctum');
-
-Route::get('events/upcoming', [EventController::class, 'getUpcomingEvents']);
-Route::get('events/{id}',[EventController::class,'show']);
-Route::post('recommended-events',[EventController::class,'setRecommendedEvents']);
-Route::get('recommended-events',[EventController::class,'getRecommendedEvents']);
-Route::post('favorite-events/{id}',[EventController::class,'setFavoriteEvents']);
-Route::get('users/favorite-events',[EventController::class,'getUserFavoriteEvents']);
-Route::delete('favorite-events/{id}',[EventController::class,'deleteFavoriteEvents']);
-
-Route::apiResource('comments',CommentController::class)->except(['index']);
-
-Route::get("search",[FilterController::class,'search']);
-Route::get("filter",[FilterController::class,'filter']);
 Route::get('users',[UserController::class,'index']);
-Route::post('/user-info',[UserController::class,'storeUserInfo']);
-Route::get('events',[EventController::class,'index']);
-Route::get('favorite-events',[EventController::class,'getFavoriteEvents']);
+Route::get('comments', [CommentController::class, 'index']);
+
 require __DIR__.'/api-auth.php';

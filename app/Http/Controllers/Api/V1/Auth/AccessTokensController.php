@@ -19,13 +19,6 @@ class AccessTokensController extends Controller
 {
     public function register(RegisterRequest $request)
     {
-        if (User::where('email', $request->email)->exists()) {
-            return response([
-                'message' => 'Email already exists',
-                'status' => 'failed'
-            ], 409);
-        }
-
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -34,15 +27,12 @@ class AccessTokensController extends Controller
 
         $token = $user->createToken('apptoken')->plainTextToken;
 
-        $response = [
+        return response([
             'user' => $user,
             'token' => $token,
             'message' => 'Registration Success',
             'status' => 'success'
-        ];
-
-        return response($response, 201);
-
+        ], 201);
     }
     public function login(LoginRequest $request)
     {
@@ -64,25 +54,13 @@ class AccessTokensController extends Controller
     }
     public function logout(Request $request)
     {
-        // Get bearer token from the request
-        $accessToken = $request->bearerToken();
-
-        // Get access token from database
-        $token = PersonalAccessToken::findToken($accessToken);
-        // Revoke token
-        if ($token)
-        {// Revoke token
-            $token->delete();
-            return response([
-                'message' => 'Logout Success',
-                'status' => 'success'
-            ], 200);
-        }
+        $accessToken = $request->user()->currentAccessToken();
+        $accessToken->delete();
 
         return response([
-            'message' => 'Token not found',
-            'status' => 'failed'
-        ], 404);
+            'message' => 'Logout Success',
+            'status' => 'success'
+        ], 200);
     }
     public function forgotPassword(ForgotPasswordRequest $request)
     {
@@ -93,8 +71,8 @@ class AccessTokensController extends Controller
         Mail::to($email)->send(new VerificationCodeMail($code));
 
         PasswordReset::updateOrCreate(
-            ['email' => $email], // This will ensure no duplicates for the same email
-            ['token' => $code, 'created_at' => now()] // Update the code; created_at will be set automatically
+            ['email' => $email],
+            ['token' => $code, 'created_at' => now()]
         );
 
         return response()->json([
@@ -104,11 +82,7 @@ class AccessTokensController extends Controller
         ], 200);
     }
 
-//        PasswordReset::create([
-//            'email'=>$email,
-//            'token'=>$code,
-//            'created_at'=>Carbon::now()
-//        ]);
+
 
 
 

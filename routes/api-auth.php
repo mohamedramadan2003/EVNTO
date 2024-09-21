@@ -16,12 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::post('/register', [AccessTokensController::class, 'register']);
+Route::post('register', [AccessTokensController::class, 'register']);
 
-Route::post('/login', [AccessTokensController::class, 'login']);
+Route::post('login', [AccessTokensController::class, 'login']);
 
-Route::post('/logout', [AccessTokensController::class, 'logout'])->middleware('auth:sanctum');
+Route::post('logout', [AccessTokensController::class, 'logout'])
+    ->middleware('auth:sanctum');
 
-Route::post('/forgot-password', [AccessTokensController::class, 'forgotPassword']);
+Route::post('forgot-password', [AccessTokensController::class, 'forgotPassword']);
 
-Route::post('/reset-password', [AccessTokensController::class, 'resetPassword']);
+Route::post('reset-password', [AccessTokensController::class, 'resetPassword']);

@@ -19,6 +19,25 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    public function saveUserInfo($college, $skills, $interests)
+    {
+        $this->profile()->updateOrCreate(
+            ['user_id' => $this->id],
+            ['college_name' => $college]
+        );
+
+        $skillData = collect($skills)->map(function ($skill) {
+            return ['skill' => $skill];
+        });
+        $this->skills()->sync($skillData);
+
+        $interestData = collect($interests)->map(function ($interest) {
+            return ['interest' => $interest];
+        });
+        $this->interests()->sync($interestData);
+    }
+
     protected $fillable = [
         'name', 'email', 'password', 'provider', 'provider_id', 'provider_token',
     ];

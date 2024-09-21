@@ -30,8 +30,8 @@ Route::middleware('auth:sanctum')
 
 
     });
-Route::get('/comments', [CommentController::class, 'index']);
-Route::get('/organizers',[OrganizerController::class,'index']);
+Route::get('comments', [CommentController::class, 'index']);
+Route::get('organizers',[OrganizerController::class,'index']);
 Route::put('profile', [ProfileController::class, 'update'])->middleware('auth:sanctum');
 
 Route::get('events/upcoming', [EventController::class, 'getUpcomingEvents']);
@@ -47,6 +47,7 @@ Route::apiResource('comments',CommentController::class)->except(['index']);
 Route::get("search",[FilterController::class,'search']);
 Route::get("filter",[FilterController::class,'filter']);
 Route::get('users',[UserController::class,'index']);
+Route::post('/user-info',[UserController::class,'storeUserInfo']);
 Route::get('events',[EventController::class,'index']);
 Route::get('favorite-events',[EventController::class,'getFavoriteEvents']);
 require __DIR__.'/api-auth.php';

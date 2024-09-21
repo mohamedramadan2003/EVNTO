@@ -1,5 +1,70 @@
-# evento
+# EVNTO
 
+
+## Overview
+EVNTO is an application designed to enhance event participation and streamline event discovery for students at Mansoura University. 
+Initially, the focus was on addressing low student turnout at campus events. However, through extensive research, it became evident that the key issue was not just poor participation but the lack of a centralized and user-friendly platform for discovering and booking events.
+
+## Problem Identification
+Our research revealed that students struggled with fragmented information sources, making it difficult to stay informed about upcoming events. 
+Traditional promotion methods were ineffective in reaching the student body, and event management was often disorganized. 
+This created a gap in communication between event organizers and students, leading to missed opportunities for participation.
+
+## Solution
+EVNTO addresses these challenges by providing a unified platform that allows students to easily discover, browse, and register for events in one place.
+Whether it's academic workshops, social activities, EVNTO simplifies the process, offering an intuitive and efficient way for students to engage with campus life.
+
+## Features
+## 1. User Features
+
+### 1.1 Email and Password Registration
+
+- **Description**:
+    -  Allows users to register using their email and password.
+
+### 1.2 Event Listings
+
+- **Description**:
+    -   Displays a comprehensive list of upcoming events, sessions, or workshops organized by volunteer teams or mentors.
+
+### 1.3 Event Listings Filtration
+
+- **Description**:
+    -  A categorized list of events based on:
+       - Free or Paid
+       - Upcoming or Past
+       - Category
+
+### 1.4 Event Details
+
+- **Description**:
+    -  Provides detailed information about each event, including:
+        - Description: A brief overview of what the event entails.
+        - Goals: A brief overview of what the event goals.
+        - Location: Where the event will be held, with possible integration with maps for directions.
+        - Date and Time: When the event will take place.
+        - Speakers: A brief overview of who is the event speakers.
+        - Type: if the event free or paid.
+
+### 1.5 Feedback and Ratings
+
+- **Description**:
+    -    Enables attendees to leave feedback and rate events they have attended. This feedback helps event organizers improve future events.
+
+### 1.6 Favorites and Savings
+
+- **Description**:
+    -   Allows users to save their favorite teams and receive updates on their latest events.
+
+### 1.7 User Profiles
+
+- **Description**: Users can create and customize their profiles, including:
+    - **Interests**: Users can list their interests, which helps the recommendation system provide personalized suggestions.
+    - **Skills**: Users can add their skills, relevant to volunteering or participation in events.
+
+## Used Libraries:
+- **Api Auth With Breeze**
+- **Api Auth With Sanctum**
 
 ## Installation Instructions
 
@@ -88,5 +153,32 @@ Ensure that you have the following installed on your local machine:
     ```
     http://localhost:8000
     ```
+
+## ROUTS
+
+| HTTP Method | EndPoint                    | Description                                                    |
+|-------------|-----------------------------|----------------------------------------------------------------|
+| POST        | api/v1/register             | User Registration                                              |
+| POST        | api/v1/login                | User Login                                                     |
+| POST        | api/v1/forgot-password      | User Forget Password                                           |
+| PUT         | api/v1/profile              | User Update his profile.                                       |
+| POST        | api/v1/logout               | User Logout.                                                   |
+| GET         | api/v1/events               | Get All Events                                                 |
+| GET         | api/v1/events/{id}          | Get Specific Event                                             |
+| POST        | api/v1/favorite-events/{id} | Set Favorite Event                                             |
+| DELETE      | api/v1/favorite-events/{id} | Delete Favorite Event                                          |
+| GET         | api/v1/favorite-events      | Get User Favorite Events                                       |
+| GET         | api/v1/search               | Search For an Event                                            |
+| GET         | api/v1/filter               | Filter Event based on Category, type and date.                 |
+| GET         | api/v1/organizers           | Get All Organizers.                                            |
+| POST        | api/v1/comments             | User Set Comment.                                              |
+| PUT         | api/v1/comments/{id}        | User Update his Comment.                                       |
+| DELETE      | api/v1/comments/{id}        | User Delete his comment.                                       |
+| GET         | api/v1/comments/{id}        | GET Event Comments.                                            |
+| GET         | api/v1/favorite-events      | Get All favorite-events to enable AI make the Recommendation . |
+| GET         | api/v1/users                | Get User's data to enable AI make the Recommendation .         |
+| GET         | api/v1/comments             | Get Event Comments to enable AI make the Event Rating .        |
+
+
 
 

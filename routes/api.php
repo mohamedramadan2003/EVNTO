@@ -24,12 +24,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')
     ->group(function () {
 
+        Route::get('events',[EventController::class,'index']);
 
         Route::put('profile', [ProfileController::class, 'update']);
 
         Route::post('/user-info',[UserController::class,'storeUserInfo']);
 
-        Route::get('events',[EventController::class,'index']);
         Route::get('events/{id}',[EventController::class,'show']);
         Route::get('events/upcoming', [EventController::class, 'getUpcomingEvents']);
         Route::post('recommended-events',[EventController::class,'setRecommendedEvents']);

@@ -15,7 +15,7 @@ class Event extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'image', 'description', 'start_date', 'end_date', 'time', 'type', 'category', 'booking_link',
+        'name', 'image', 'description', 'start_date', 'end_date', 'time', 'type', 'category', 'booking_link', 'organizer_id'
     ];
 
     public function goals()

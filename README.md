@@ -63,7 +63,7 @@ Whether it's academic workshops, social activities, EVNTO simplifies the process
     - **Skills**: Users can add their skills, relevant to volunteering or participation in events.
 
 ## Used Libraries:
-- **Api Auth With Breeze**
+- **Web Auth With Breeze**
 - **Api Auth With Sanctum**
 
 ## Installation Instructions
@@ -74,6 +74,126 @@ Ensure that you have the following installed on your local machine:
 - [XAMPP](https://www.apachefriends.org/) (which includes PHP, MySQL, and Apache)
 - [Composer](https://getcomposer.org/)
 - [Node.js](https://nodejs.org/) and npm (for frontend assets)
+
+## ROUTS
+
+| HTTP Method | EndPoint                    | Description                                                    |
+|-------------|-----------------------------|----------------------------------------------------------------|
+| POST        | api/v1/register             | User Registration                                              |
+| POST        | api/v1/login                | User Login                                                     |
+| POST        | api/v1/forgot-password      | User Forget Password                                           |
+| PUT         | api/v1/profile              | User Update his profile.                                       |
+| POST        | api/v1/logout               | User Logout.                                                   |
+| GET         | api/v1/events               | Get All Events                                                 |
+| GET         | api/v1/events/{id}          | Get Specific Event                                             |
+| POST        | api/v1/favorite-events/{id} | Set Favorite Event                                             |
+| DELETE      | api/v1/favorite-events/{id} | Delete Favorite Event                                          |
+| GET         | api/v1/favorite-events      | Get User Favorite Events                                       |
+| GET         | api/v1/search               | Search For an Event                                            |
+| GET         | api/v1/filter               | Filter Event based on Category, type and date.                 |
+| GET         | api/v1/organizers           | Get All Organizers.                                            |
+| POST        | api/v1/comments             | User Set Comment.                                              |
+| PUT         | api/v1/comments/{id}        | User Update his Comment.                                       |
+| DELETE      | api/v1/comments/{id}        | User Delete his comment.                                       |
+| GET         | api/v1/comments/{id}        | GET Event Comments.                                            |
+| GET         | api/v1/favorite-events      | Get All favorite-events to enable AI make the Recommendation . |
+| GET         | api/v1/users                | Get User's data to enable AI make the Recommendation .         |
+| GET         | api/v1/comments             | Get Event Comments to enable AI make the Event Rating .        |
+
+
+### System Tests
+This section outlines how to run system tests for the EVNTO application to ensure all features are working correctly.
+
+### 1. User Registration Test
+**Objective**: Test if a user can register using email and password.
+
+**Test Steps**:
+1. Navigate to the registration page.
+2. Enter valid email and password.
+3. Verify that the user can log in after registration.
+
+
+**Expected Result**: 
+1. User can register.
+2. User cannot register with existing email.
+
+### 2. User Login Test
+**Objective**: Test if a user can log in using email and password.
+
+**Test Steps**:
+1. Navigate to the login page.
+2. Enter registered email and password.
+
+**PASS**: Tests\Feature\Auth\AuthTest
+
+**Expected Result**:
+1. User can login.
+2. User cannot login with invalid credentials.
+
+### 3. Logout  Test
+**Objective**: Verify that users can log out of the application successfully.
+
+**Test Steps**:
+1. Log in as a registered user.
+2. Navigate to the user profile.
+3. Click on the "Logout" button.
+
+**Expected Result**:
+- User can log out.
+
+### 4. Profile Update Test
+**Objective**: Verify that users can successfully update their profile information.
+
+**Test Steps**:
+1. Log in as a registered user.
+2. Navigate to the profile settings or user profile page.
+3. Edit one or more fields (e.g., interests, skills, contact information).
+4. Click the "Update" button.
+5. Verify that the profile information is updated and reflected on the profile page.
+
+**Expected Result**:
+- The updated profile information is saved and displayed correctly.
+
+### 9. Retrieve All Users with Profile Skills and Interests Test
+**Objective**: Verify that the API correctly retrieves a list of all users along with their profile skills and interests.
+
+**Endpoint**: `GET /api/v1/users`
+
+**Test Steps**:
+1. Send a `GET` request to the `/api/v1/users` endpoint.
+2. Verify that the response status is `200 OK`.
+3. Check the response body to ensure it contains a list of users with their associated skills and interests.
+4. Ensure that each user object in the response includes:
+    - User ID
+    - Collage name
+    - Skills (array of skills)
+    - Interests (array of interests)
+
+**Expected Result**:
+- The API returns a `200 OK` status.
+- The response contains a list of users, with each user having their skills and interests included in the data.
+
+**Example Response**:
+```json
+{
+  "users": [
+    {
+      "id": 1,
+      "collage_name": "Science",
+      "skills": ["Public Speaking", "Project Management"],
+      "interests": ["Workshops", "Bootcamps"]
+    },
+    {
+      "id": 2,
+      "name_name": "Computers& Information Science",
+      "skills": ["Time Management", "Multitasking"],
+      "interests": ["Lectures", "Seminars"]
+    }
+  ]
+}
+```
+
+
 
 ### Installation Steps
 
@@ -154,30 +274,6 @@ Ensure that you have the following installed on your local machine:
     http://localhost:8000
     ```
 
-## ROUTS
-
-| HTTP Method | EndPoint                    | Description                                                    |
-|-------------|-----------------------------|----------------------------------------------------------------|
-| POST        | api/v1/register             | User Registration                                              |
-| POST        | api/v1/login                | User Login                                                     |
-| POST        | api/v1/forgot-password      | User Forget Password                                           |
-| PUT         | api/v1/profile              | User Update his profile.                                       |
-| POST        | api/v1/logout               | User Logout.                                                   |
-| GET         | api/v1/events               | Get All Events                                                 |
-| GET         | api/v1/events/{id}          | Get Specific Event                                             |
-| POST        | api/v1/favorite-events/{id} | Set Favorite Event                                             |
-| DELETE      | api/v1/favorite-events/{id} | Delete Favorite Event                                          |
-| GET         | api/v1/favorite-events      | Get User Favorite Events                                       |
-| GET         | api/v1/search               | Search For an Event                                            |
-| GET         | api/v1/filter               | Filter Event based on Category, type and date.                 |
-| GET         | api/v1/organizers           | Get All Organizers.                                            |
-| POST        | api/v1/comments             | User Set Comment.                                              |
-| PUT         | api/v1/comments/{id}        | User Update his Comment.                                       |
-| DELETE      | api/v1/comments/{id}        | User Delete his comment.                                       |
-| GET         | api/v1/comments/{id}        | GET Event Comments.                                            |
-| GET         | api/v1/favorite-events      | Get All favorite-events to enable AI make the Recommendation . |
-| GET         | api/v1/users                | Get User's data to enable AI make the Recommendation .         |
-| GET         | api/v1/comments             | Get Event Comments to enable AI make the Event Rating .        |
 
 
 

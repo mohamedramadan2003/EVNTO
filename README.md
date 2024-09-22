@@ -146,7 +146,7 @@ This section outlines how to run system tests for the EVNTO application to ensur
 **Expected Result**:
 - The updated profile information is saved and displayed correctly.
 
-### 9. Retrieve All Users with Profile Skills and Interests Test
+### 5. Retrieve All Users with Profile Skills and Interests Test
 **Objective**: Verify that the API correctly retrieves a list of all users along with their profile skills and interests.
 
 **Endpoint**: `GET /api/v1/users`

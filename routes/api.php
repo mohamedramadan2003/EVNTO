@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Api\V1\CalenderController;
 use App\Http\Controllers\Api\V1\CommentController;
 use App\Http\Controllers\Api\V1\EventController;
 use App\Http\Controllers\Api\V1\FilterController;

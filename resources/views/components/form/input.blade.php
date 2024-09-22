@@ -4,7 +4,7 @@
 <input
 type="{{ $type ?? "text" }}"
 name="{{ $name }}"
-value="{{ old( $name , $value) }}"
+value="{{ old( $name , $value ?? null) }}"
 {{ $attributes->class([
     'form-control',
     'is-invalid' => @$errors->has($name)

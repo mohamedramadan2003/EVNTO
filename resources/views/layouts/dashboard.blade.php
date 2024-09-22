@@ -83,6 +83,7 @@
         <div class="sidebar">
             <!-- Sidebar user panel (optional) -->
             @auth('organizer')
+<<<<<<< HEAD
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
                         <img src="{{  asset('storage/'.Auth::guard('organizer')->user()->profile->image) }}" class="img-circle elevation-2" alt="User Image">
@@ -91,6 +92,16 @@
                         <a href="{{ route('dashboard.profile.edit') }}" class="d-block">{{ Auth::guard('organizer')->user()->name }}</a>
                     </div>
                 </div>
+=======
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img src="{{ Auth::guard('organizer')->user()->profile->image_url ? asset('storage/'.Auth::guard('organizer')->user()->profile->image) : 'front-assets/home/images/logo-shape.png'  }}" class="img-circle elevation-2" alt="User Image">
+                </div>
+                <div class="info">
+                    <a href="{{ route('dashboard.profile.edit') }}" class="d-block">{{ Auth::guard('organizer')->user()->name }}</a>
+                </div>
+            </div>
+>>>>>>> 2ae173be342c0eab00629d1b943b2aadb7d09e63
                 <form action="{{ route('logout') }}" method="post" >
                     @csrf
                     <button type="submit" class="btn btn-danger">Logout</button>

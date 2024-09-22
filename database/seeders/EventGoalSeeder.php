@@ -18,15 +18,15 @@ class EventGoalSeeder extends Seeder
         DB::table('event_goals')->insert([
             [
                 'name' => 'Network with Industry Leaders',
-                'event_id' => 13,
+                'event_id' => 1,
             ],
             [
                 'name' => 'Learn New Skills',
-                'event_id' => 13,
+                'event_id' => 1,
             ],
             [
                 'name' => 'Network with Industry Leaders',
-                'event_id' => 13,
+                'event_id' => 1,
             ],
             [
                 'name' => 'Gain Insights on Market Trends',
@@ -38,7 +38,7 @@ class EventGoalSeeder extends Seeder
             ],
             [
                 'name' => 'Share Best Practices',
-                'event_id' => 13,
+                'event_id' => 1,
             ],
             [
                 'name' => 'Learn New Skills',

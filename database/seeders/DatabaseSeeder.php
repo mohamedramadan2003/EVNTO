@@ -18,23 +18,23 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-//        Role::create([
-//            'name' => 'organizer',
-//        ]);
-//        $this->call(EventSeeder::class);
-//        $this->call(EventGoalSeeder::class);
-//        $this->call(EventSpeakerSeeder::class);
-//        $this->call(EventLocationSeeder::class);
-
         Role::create([
-           'name' => 'Organizer',
+            'name' => 'organizer',
         ]);
-        Organizer::create([
-            'name' => 'IEEE',
-            'email' => 'ieee@ieee.com',
-            'password' => Hash::make('ieee123'),
-            'type' => 'Team',
-            'role_id' => 1,
-        ]);
+        $this->call(EventSeeder::class);
+        $this->call(EventGoalSeeder::class);
+        $this->call(EventSpeakerSeeder::class);
+        $this->call(EventLocationSeeder::class);
+//
+//        Role::create([
+//           'name' => 'Organizer',
+//        ]);
+//        Organizer::create([
+//            'name' => 'IEEE',
+//            'email' => 'ieee@ieee.com',
+//            'password' => Hash::make('ieee123'),
+//            'type' => 'Team',
+//            'role_id' => 1,
+//        ]);
     }
 }

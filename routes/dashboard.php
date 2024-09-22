@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::
-    prefix('dashboard')
+Route::middleware(['auth:organizer'])
+    ->prefix('dashboard')
     ->name('dashboard.')
     ->group(function () {
 
@@ -32,7 +32,7 @@ Route::
     Route::get('/profile',[ProfileController::class, 'edit'])
         ->name('profile.edit');
 
-    Route::patch('/profile',[ProfileController::class, 'update'])
+    Route::put('/profile',[ProfileController::class, 'update'])
         ->name('profile.update');
 
     Route::resources([
@@ -42,6 +42,6 @@ Route::
         '/roles' => RoleConteoller::class,
     ]);
 
-
-
 });
+
+require __DIR__.'/dashboard-auth.php';

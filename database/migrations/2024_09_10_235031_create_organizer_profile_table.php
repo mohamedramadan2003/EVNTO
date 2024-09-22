@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('organizer_profile', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('facebook_link');
             $table->string('linkedin_link');
             $table->string('twitter_link');

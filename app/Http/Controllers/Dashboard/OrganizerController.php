@@ -80,7 +80,7 @@ class OrganizerController extends Controller
     public function edit(Organizer $organizer)
     {
 
-        return view('organizers.edit', compact('organizer'));
+        return view('dashboard.organizers.edit', compact('organizer'));
     }
 
 

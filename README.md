@@ -184,6 +184,7 @@ This section outlines how to run system tests for the EVNTO application to ensur
   ]
 }
 ```
+
 ### 6. Retrieve All Events with Related Data Test
 **Objective**: Verify that the API retrieves a list of all events along with their related data .
 
@@ -214,6 +215,7 @@ This section outlines how to run system tests for the EVNTO application to ensur
 **Expected Result**:
 - The API returns a `200 OK` status.
 - The response contains a list of events with related data.
+
 
 **Example Response**:
 ```json
@@ -247,6 +249,102 @@ This section outlines how to run system tests for the EVNTO application to ensur
     "location_longitude": "31.381523"
 }
 ```
+
+### 7. Retrieve All Organizers with Related Data Test
+**Objective**: Verify that the API retrieves a list of all organizers along with their related data .
+
+**Endpoint**: `GET /api/v1/events`
+
+**Test Steps**:
+1. Send a `GET` request to the `/api/v1/organizers` endpoint.
+2. Verify that the response status is `200 OK`.
+3. Check the response body to ensure it contains a list of events along with related data such as:
+    - Organizer ID
+    - Organizer name
+    - Organizer image
+    - type(Team or Mentor)
+    - facebook_link
+    - linkedin_link
+    - twitter_link
+    - Events
+    - Event ID
+    - Event name
+    - Description
+    - start_date
+    - end_date
+    - time
+    - Location (location_latitude, location_longitude)
+    - Organizer_id
+    - Categories
+    - Status
+    - Type
+    - booking_link
+    - speakers_name
+    - speakers_image
+    - goals
+
+4. Ensure that each organizer in the response includes all relevant data fields.
+
+**Expected Result**:
+- The API returns a `200 OK` status.
+- The response contains a list of organizers with related data.
+
+**Example Response**:
+```json
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "IEEE",
+            "image": "http://example.com/organizer1.jpg",
+            "type": "Team",
+            "facebook_link": "http://facebook.com/organizer1",
+            "linkedin_link": "http://linkedin.com/organizer1",
+            "twitter_link": "http://twitter.com/organizer1",
+            "events": [
+                {
+                    "name": "IEEE VICTORS 0.3",
+                    "image": "http://example.com/event1.jpg",
+                    "description": "Description for event 1",
+                    "start_date": "2024-09-25",
+                    "end_date": "2024-09-26",
+                    "time": "10:00 AM",
+                    "type": "Free",
+                    "status": "upcoming",
+                    "category": "Tech",
+                    "booking_link": "http://bookinglink.com/event1",
+                    "speakers_name": [
+                        "Mohamed Saad",
+                        "Amira Mohamed"
+                    ],
+                    "speakers_image": [
+                        "http://example.com/mohamed.jpg",
+                        "http://example.com/amira.jpg"
+                    ],
+                    "goals": [
+                        "Network with Industry Leaders",
+                        "Gain Insights on Market Trends"
+                    ],
+                    "location_address": "ITI Mansoura University",
+                    "location_latitude": "31.381523",
+                    "location_longitude": "31.037933"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Organizer 2",
+            "image": "http://example.com/organizer2.jpg",
+            "type": "Mentor",
+            "facebook_link": "http://facebook.com/organizer2",
+            "linkedin_link": "http://linkedin.com/organizer2",
+            "twitter_link": "http://twitter.com/organizer2",
+            "events": []
+        }
+    ]    
+}
+```
+
 
 ## Installation Instructions
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EventResource;
+use App\Http\Resources\EventSummaryResource;
 use App\Models\Event\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,12 +13,11 @@ class EventController extends Controller
 {
     public function index(Request $request)
     {
-        $events = Event::with(['speakers', 'goals', 'location'])
+        $events = Event::with(['speakers', 'goals', 'location', 'organizer'])
             ->filter($request->query())
             ->get();
 
-
-        return EventResource::collection($events);
+        return EventSummaryResource::collection($events);
 
     }
     public function show(string $id)
@@ -78,7 +78,7 @@ class EventController extends Controller
             ], 200);
         }
 
-        return EventResource::collection($favoriteEvents);
+        return EventSummaryResource::collection($favoriteEvents);
 
     }
 
@@ -98,18 +98,22 @@ class EventController extends Controller
 
     public function getFavoriteEvents()
     {
+        $userId = auth()->id();
         $favouriteEvents = DB::table('favourite_events')
-            ->select('user_id', 'event_id', 'created_at', 'updated_at')
-            ->get();
+            ->where('user_id', $userId)
+            ->pluck('event_id'); // Get only the event IDs
 
-        // Check if there are no favorite events
+//         Check if there are no favorite events
         if ($favouriteEvents->isEmpty()) {
             return response()->json([
                 'message' => 'There are no favorite events'
             ], 200);
         }
+        $events = Event::with(['location', 'organizer'])
+            ->whereIn('id', $favouriteEvents)
+            ->get();
 
-        return response()->json($favouriteEvents);
+        return EventSummaryResource::collection($events);
     }
 
 

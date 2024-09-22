@@ -15,37 +15,31 @@ class FilterController extends Controller
     public function search(SearchEventRequest $request)
     {
         $query = $request->input('query');
-        $organizerName = $request->input('organizer_name');
-        $address = $request->input('address');
 
         $eventsQuery = Event::query();
-        if ($query)
-        {
+
+        if ($query) {
             $eventsQuery->where(function ($q) use ($query) {
                 $q->where('name', 'LIKE', "%{$query}%")
                     ->orWhere('description', 'LIKE', "%{$query}%")
-                    ->orWhere('category', 'LIKE', "%{$query}%");
-            });
-        }
-        if ($organizerName)
-        {
-            $eventsQuery->whereHas('organizer', function ($q) use ($organizerName) {
-                $q->where('name', 'LIKE', '%' . $organizerName . '%');
-            });
-        }
-        if ($address)
-        {
-            $eventsQuery->whereHas('location', function ($q) use ($address) {
-                $q->where(DB::raw('LOWER(address)'), 'LIKE', "%" . strtolower($address) . "%");
+                    ->orWhere('category', 'LIKE', "%{$query}%")
+                    ->orWhereHas('organizer', function ($orgQuery) use ($query) {
+                        $orgQuery->where('name', 'LIKE', "%{$query}%");
+                    })
+                    ->orWhereHas('location', function ($locQuery) use ($query) {
+                        $locQuery->where(DB::raw('LOWER(address)'), 'LIKE', "%" . strtolower($query) . "%");
+                    });
             });
         }
 
         $events = $eventsQuery->with(['speakers', 'goals', 'location', 'organizer'])->get();
+
         if ($events->isEmpty()) {
             return response()->json([
                 'message' => 'No results found.'
             ], 200);
         }
+
         return EventResource::collection($events);
     }
 

@@ -14,13 +14,25 @@ class EventComment extends Model
         'description', 'user_id', 'event_id',
     ];
 
+    // Relationship to Event
+    public function event()
+    {
+        return $this->belongsTo(Event::class);
+    }
+
+    // Relationship to User
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function event()
+    // Add Comment with current user_id
+    public static function addComment($eventId, $description)
     {
-        return $this->belongsTo(Event::class);
+        return self::create([
+            'event_id' => $eventId,
+            'description' => $description,
+            'user_id' => Auth::id() // Use the authenticated user
+        ]);
     }
 }

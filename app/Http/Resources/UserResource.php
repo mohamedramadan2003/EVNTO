@@ -15,7 +15,7 @@ class UserResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
+            'user_id' => $this->id,
             'college_name' => $this->profile->collage_name ?? 'null',
             'user_skills' => $this->skills->pluck('skill')->toArray(),
             'user_interests' => $this->interests->pluck('interest')->toArray()

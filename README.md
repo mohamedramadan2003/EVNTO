@@ -184,6 +184,70 @@ This section outlines how to run system tests for the EVNTO application to ensur
   ]
 }
 ```
+### 6. Retrieve All Events with Related Data Test
+**Objective**: Verify that the API retrieves a list of all events along with their related data .
+
+**Endpoint**: `GET /api/v1/events`
+
+**Test Steps**:
+1. Send a `GET` request to the `/api/v1/events` endpoint.
+2. Verify that the response status is `200 OK`.
+3. Check the response body to ensure it contains a list of events along with related data such as:
+    - Event ID
+    - Event name
+    - Description
+    - start_date
+    - end_date
+    - time
+    - Location (location_latitude, location_longitude)
+    - Organizer_id
+    - Categories
+    - Status
+    - Type
+    - booking_link
+    - speakers_name
+    - speakers_image
+    - goals
+
+4. Ensure that each event in the response includes all relevant data fields.
+
+**Expected Result**:
+- The API returns a `200 OK` status.
+- The response contains a list of events with related data.
+
+**Example Response**:
+```json
+{
+    "id": 2,
+    "name": "IEEE VICTORIS 3.0",
+    "image": "tech_IEEE_2024.jpg",
+    "description": "It is an opportunity to enhance your expertise and gain experience through participation with other contestants.",
+    "start_date": "2024-09-25",
+    "end_date": "2024-09-26",
+    "time": "09:00:00",
+    "type": "free",
+    "status": "upcoming",
+    "category": "Technology",
+    "booking_link": "https://example.com/book/tech-conference-2024",
+    "organizer_id": 2,
+    "speakers_name": [
+        "Mohamed Saad",
+        "Amira Mohamed"
+    ],
+    "speakers_image": [
+        "mohamed.jpg",
+        "amira.jpg"
+    ],
+    "goals": [
+        "Network with Industry Leaders",
+        "Gain Insights on Market Trends"
+    ],
+    "location_address": "ITI Mansoura University",
+    "location_latitude": "31.037933",
+    "location_longitude": "31.381523"
+}
+```
+
 ## Installation Instructions
 
 ### Prerequisites

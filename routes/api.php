@@ -26,6 +26,7 @@ Route::middleware('auth:sanctum')
 
         Route::get('events',[EventController::class,'index']);
 
+        Route::get('profile/{id}', [ProfileController::class, 'edit']);
         Route::put('profile', [ProfileController::class, 'update']);
 
         Route::post('/user-info',[UserController::class,'storeUserInfo']);

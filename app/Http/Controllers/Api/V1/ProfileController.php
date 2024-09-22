@@ -12,6 +12,20 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
+
+    public function edit($id)
+    {
+        $user = User::with(['profile', 'skills', 'interests'])->findOrFail($id);
+
+        return response()->json([
+            'name' => $user->name,
+            'email' => $user->email,
+            'collage_name' => $user->profile ? $user->profile->collage_name : null,
+            'image' => $user->profile ? $user->profile->image : null,
+            'skills' => $user->skills->pluck('skill')->toArray(),
+            'interests' => $user->interests->pluck('interest')->toArray(),
+        ], 200);
+    }
     public function update(UpdateUserProfileRequest $request)
     {
         $user = auth()->user();

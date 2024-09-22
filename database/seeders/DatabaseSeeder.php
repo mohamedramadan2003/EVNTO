@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Role\Role;
-use App\Models\User\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -24,8 +23,6 @@ class DatabaseSeeder extends Seeder
 //        $this->call(EventGoalSeeder::class);
 //        $this->call(EventSpeakerSeeder::class);
 //        $this->call(EventLocationSeeder::class);
-
-         User::factory(10)->create();
 
 
     }

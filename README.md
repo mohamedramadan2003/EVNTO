@@ -66,14 +66,6 @@ Whether it's academic workshops, social activities, EVNTO simplifies the process
 - **Web Auth With Breeze**
 - **Api Auth With Sanctum**
 
-## Installation Instructions
-
-### Prerequisites
-Ensure that you have the following installed on your local machine:
-
-- [XAMPP](https://www.apachefriends.org/) (which includes PHP, MySQL, and Apache)
-- [Composer](https://getcomposer.org/)
-- [Node.js](https://nodejs.org/) and npm (for frontend assets)
 
 ## ROUTS
 
@@ -192,7 +184,14 @@ This section outlines how to run system tests for the EVNTO application to ensur
   ]
 }
 ```
+## Installation Instructions
 
+### Prerequisites
+Ensure that you have the following installed on your local machine:
+
+- [XAMPP](https://www.apachefriends.org/) (which includes PHP, MySQL, and Apache)
+- [Composer](https://getcomposer.org/)
+- [Node.js](https://nodejs.org/) and npm (for frontend assets)
 
 
 ### Installation Steps

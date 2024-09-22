@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Sponsor\Sponsor;
 use Illuminate\Http\Request;
 
 class SponsorController extends Controller
@@ -14,7 +15,8 @@ class SponsorController extends Controller
      */
     public function index()
     {
-        //
+        $sponsors = Sponsor::all();
+        return view('dashboard.sponsors.index',compact('sponsors'));
     }
 
     /**

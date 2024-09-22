@@ -76,21 +76,7 @@ class Event extends Model
     {
         return $this->belongsTo(Organizer::class);
     }
-    public function getImageUrlAttribute()
-    {
-        if (!$this->image) {
-            return
-            'https://www.google.com/url?sa=i&url=https%3A%2F%2Ftwitter.
-            com%2Fieeemansb&psig=AOvVaw0ZmJ6yy6DIw9cPvXvAINfq&ust=172693475545
-            1000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLD6x7Xz0YgDFQAAAAAdAAAAABAK';
-        }
-        if (Str::startsWith($this->image, ['http://', 'https://'])) {
-            return $this->image;
 
-        }
-        return asset('storage/' . $this->image);
-
-    }
 
 
 }

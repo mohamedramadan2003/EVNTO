@@ -85,12 +85,16 @@
             @auth('organizer')
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{ asset('storage/'.Auth::guard('organizer')->user()->profile->image)  }}" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{ Auth::guard('organizer')->user()->profile->image_url ? asset('storage/'.Auth::guard('organizer')->user()->profile->image) : 'front-assets/home/images/logo-shape.png'  }}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
                     <a href="{{ route('dashboard.profile.edit') }}" class="d-block">{{ Auth::guard('organizer')->user()->name }}</a>
                 </div>
             </div>
+                <form action="{{ route('logout') }}" method="post" >
+                    @csrf
+                    <button type="submit" class="btn btn-danger">Logout</button>
+                </form>
             @endauth
 
             <!-- SidebarSearch Form -->

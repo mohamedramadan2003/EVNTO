@@ -344,7 +344,85 @@ This section outlines how to run system tests for the EVNTO application to ensur
     ]    
 }
 ```
+## Comments Feature Tests
 
+This section describes the tests implemented for the comments feature associated with events in our application. Each test verifies specific functionalities related to comments.
+
+### 1. ✓ Can Create Comment
+
+**Test Steps:**
+1. Authenticate a user.
+2. Send a POST request to the `api/v1/comments` endpoint with the following data:
+    - `content`: "This is a test comment."
+    -    `event_id`: 1
+
+3. Verify the response status is `201 Created`.
+
+**Expected Response:**
+```json
+{
+    "message": "Comment created successfully.",
+    "comment": {
+        "id": 1,
+        "content": "This is a test comment.",
+        "event_id": {event_id},
+        "user_id": {user_id},
+        "created_at": "2023-01-01T00:00:00Z",
+        "updated_at": "2023-01-01T00:00:00Z"
+    }
+}
+```
+
+### 2. ✓ can show comments for event 
+  This test ensures that all comments related to a specific event can be retrieved. It verifies that the correct comments are returned when fetching comments for an event.
+
+**Test Steps:**
+1. Authenticate a user.
+2. Send a GET request to the api/v1/comments/{id} endpoint.
+3. Verify the response status is 200 OK.
+
+```json
+[
+    {
+        "id": 1,
+        "content": "This is a test comment.",
+        "event_id": {event_id},
+        "user_id": {user_id},
+        "created_at": "2023-01-01T00:00:00Z",
+        "updated_at": "2023-01-01T00:00:00Z"
+    },
+    // ... additional comments
+]
+```
+
+### 3. ✓ Can Update Comment
+This test ensures that the user can update his comment.
+
+**Test Steps:**
+1. Authenticate a user.
+2. Send a PUT request to the api/v1/comments/{id} endpoint with the following data:
+  - content: "This is an updated comment."
+3. Verify the response status is 200 OK.
+
+```json
+[
+    "message": "Comment updated successfully."
+]
+```
+
+### 4. ✓ Can Delete Comment
+This test ensures that the user can delete his comment.
+
+**Test Steps:**
+1. Authenticate a user.
+2. Send a DELETE request to the api/v1/comments/{id} endpoint.
+3. Verify the response status is 200 OK.
+
+```json
+[
+    "message": "Comment deleted successfully."
+]
+```
 
 ## Installation Instructions
 

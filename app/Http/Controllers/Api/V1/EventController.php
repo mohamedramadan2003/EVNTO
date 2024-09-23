@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\EventResource;
 use App\Http\Resources\EventSummaryResource;
 use App\Models\Event\Event;
+use App\Models\Event\RecommendedEvent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
@@ -39,13 +41,44 @@ class EventController extends Controller
         return EventResource::collection($events);
     }
 
-    public function setRecommendedEvents(Request $request , string $id)
+    public function setRecommendedEvents(Request $request)
     {
+        // Get user ID and the API URL
+        $userId = $request->input('user_id');
+        $apiUrl = $request->input('api_url', 'https://4e5c-197-32-29-130.ngrok-free.app/recommendations'); // Default API URL
 
+        // Fetch the recommended events from the AI service
+        $recommendedEvents = RecommendedEvents::getRecommendedEvents($userId, $apiUrl);
+
+        // Save each recommended event in the database
+        foreach ($recommendedEvents['event_id'] as $eventId) {
+            RecommendedEvent::updateOrCreate(
+                ['user_id' => $userId, 'event_id' => $eventId]
+            );
+        }
+
+        return response()->json([
+            'message' => 'Recommended events saved successfully!',
+            'recommended_events' => $recommendedEvents
+        ], 200);
     }
+
+    /**
+     * Get recommended events for the authenticated user.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getRecommendedEvents()
     {
+        $userId = Auth::id();
 
+        // Retrieve recommended events for the authenticated user
+        $recommendedEvents = RecommendedEvent::where('user_id', $userId)->get();
+
+        return response()->json([
+            'user_id' => $userId,
+            'recommended_events' => $recommendedEvents->pluck('event_id')
+        ], 200);
     }
     public function setFavoriteEvents(Request $request , string $id)
     {

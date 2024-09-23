@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\V1\FilterController;
 use App\Http\Controllers\Api\V1\OrganizerController;
 use App\Http\Controllers\Api\V1\ProfileController;
 use App\Http\Controllers\Api\V1\UserController;
+use App\Http\Controllers\RatingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,9 @@ Route::middleware('auth:sanctum')
         Route::get('favorite-events',[EventController::class,'getFavoriteEvents']);
         Route::get('users/favorite-events',[EventController::class,'getUserFavoriteEvents']);
         Route::delete('favorite-events/{id}',[EventController::class,'deleteFavoriteEvents']);
+
+        Route::post('/store-event-rating', [RatingController::class, 'storeEventRating']);
+
 
         Route::get('organizers',[OrganizerController::class,'index']);
 

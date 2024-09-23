@@ -113,7 +113,7 @@ class EventController extends Controller
         }
 
         // Redirect to event list with success message
-        return redirect()->route('events.index')->with('success', 'Event created successfully!');
+        return redirect()->route('dashboard.events.index')->with('success', 'Event created successfully!');
     }
 
 

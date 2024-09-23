@@ -168,10 +168,12 @@ Whether it's academic workshops, social activities, EVNTO simplifies the process
 
 
 
-### System Tests
+## System Tests
+
 This section outlines how to run system tests for the EVNTO application to ensure all features are working correctly.
 
 ### 1. User Registration Test
+
 **Objective**: Test if a user can register using email and password.
 
 **Test Steps**:
@@ -185,6 +187,7 @@ This section outlines how to run system tests for the EVNTO application to ensur
 2. User cannot register with existing email.
 
 ### 2. User Login Test
+
 **Objective**: Test if a user can log in using email and password.
 
 **Test Steps**:
@@ -198,6 +201,7 @@ This section outlines how to run system tests for the EVNTO application to ensur
 2. User cannot login with invalid credentials.
 
 ### 3. Logout  Test
+
 **Objective**: Verify that users can log out of the application successfully.
 
 **Test Steps**:
@@ -209,6 +213,7 @@ This section outlines how to run system tests for the EVNTO application to ensur
 - User can log out.
 
 ### 4. Profile Update Test
+
 **Objective**: Verify that users can successfully update their profile information.
 
 **Test Steps**:
@@ -222,6 +227,7 @@ This section outlines how to run system tests for the EVNTO application to ensur
 - The updated profile information is saved and displayed correctly.
 
 ### 5. Retrieve All Users with Profile Skills and Interests Test
+
 **Objective**: Verify that the API correctly retrieves a list of all users along with their profile skills and interests.
 
 **Endpoint**: `GET /api/v1/users`
@@ -261,6 +267,7 @@ This section outlines how to run system tests for the EVNTO application to ensur
 ```
 
 ### 6. Retrieve All Events with Related Data Test
+
 **Objective**: Verify that the API retrieves a list of all events along with their related data .
 
 **Endpoint**: `GET /api/v1/events`
@@ -326,6 +333,7 @@ This section outlines how to run system tests for the EVNTO application to ensur
 ```
 
 ### 7. Retrieve All Organizers with Related Data Test
+
 **Objective**: Verify that the API retrieves a list of all organizers along with their related data .
 
 **Endpoint**: `GET /api/v1/events`
@@ -449,6 +457,7 @@ This section describes the tests implemented for the comments feature associated
 ```
 
 ### 2. ✓ can show comments for event 
+
   This test ensures that all comments related to a specific event can be retrieved. It verifies that the correct comments are returned when fetching comments for an event.
 
 **Test Steps:**
@@ -471,6 +480,7 @@ This section describes the tests implemented for the comments feature associated
 ```
 
 ### 3. ✓ Can Update Comment
+
 This test ensures that the user can update his comment.
 
 **Test Steps:**
@@ -486,6 +496,7 @@ This test ensures that the user can update his comment.
 ```
 
 ### 4. ✓ Can Delete Comment
+
 This test ensures that the user can delete his comment.
 
 **Test Steps:**

@@ -62,6 +62,77 @@ Whether it's academic workshops, social activities, EVNTO simplifies the process
     - **Interests**: Users can list their interests, which helps the recommendation system provide personalized suggestions.
     - **Skills**: Users can add their skills, relevant to volunteering or participation in events.
 
+## 2. AI Features
+
+### 2.1 Recommended Events
+
+- **Description**:
+    -   Recommendation system provide user with recommended events based on his favorite events and his answers for some questions(collage name, skills and interests).
+
+### 2.2 Event Rating
+
+- **Description**:
+    -   AI provides rating for every event base on the user's comments which helps the organizers know feedback about thier event.
+
+### 2.3 Chat bot
+
+- **Description**:
+    -   It helps users by answering there questions about events and related details in real time response.
+
+## 3. Dashboard Features
+
+### 3.1 Create Organizer Profile
+
+- **Description**:
+    -   Each organizer can make profile by adding his info:
+         - Name
+         - email
+         - password
+         - image
+         - facebook link
+         - linkedin link
+         - Twitter link
+
+### 3.2 Add Event
+
+- **Description**:
+    -   Each organizer can add more than one event by adding event details:
+    - 
+      - Event name
+      - Description
+      - image
+      - start_date
+      - end_date
+      - time
+      - Location
+      - Category
+      - Status
+      - Type
+      - booking_link
+      - speakers_name
+      - speakers_image
+      - speakers_name
+      - goals
+
+### 3.3 Organizer Logout
+
+- **Description**:
+    -   Each organizer can log out from the dashboard.
+
+### 3.4 Insights & Analytics
+
+- **Description**:
+    -   Each organizer provided by an insights about the events they add.
+
+### 3.5 Admins role
+
+- **Description**:
+    -   Admins can see all organizers and there events, add sponsors and manage application through dashboard. 
+
+**Dashboard:**
+
+![Dashboard](public/assets/images/dashboard.png)
+
 ## Used Libraries:
 - **Web Auth With Breeze**
 - **Api Auth With Sanctum**
@@ -91,6 +162,10 @@ Whether it's academic workshops, social activities, EVNTO simplifies the process
 | GET         | api/v1/favorite-events      | Get All favorite-events to enable AI make the Recommendation . |
 | GET         | api/v1/users                | Get User's data to enable AI make the Recommendation .         |
 | GET         | api/v1/comments             | Get Event Comments to enable AI make the Event Rating .        |
+| POST        | api/v1/store-event-rating   | Store event rating sent from AI .                              |
+| POST        | api/v1/recommended-events   | Get recommended event from AI and store them in database .     |
+| POST        | api/v1/recommended-events   | Retrieve Recommended events from database to users .           |
+
 
 
 ### System Tests
@@ -423,6 +498,10 @@ This test ensures that the user can delete his comment.
     "message": "Comment deleted successfully."
 ]
 ```
+
+**Test Result:**
+
+![Test Results](public/assets/images/Test_result.png)
 
 ## Installation Instructions
 
